@@ -1,0 +1,45 @@
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+.inner-display {
+    background-color: #1b1c21d0;
+    color: azure;
+    padding: 25px;
+    border-radius: 25px;
+    width: 25%;
+}
+
+.search-location {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-info.loading {
+    visibility: hidden;
+}
+
+.main-info.loading:after {
+    visibility: visible;
+    content: "Loading...";
+    color: azure;
+}
+
+/* button {
+    
+} */
+
+.icon-box {
+    display: flex;
+    align-items: center;
+}
+
+.description {
+    text-transform: capitalize;
+}
