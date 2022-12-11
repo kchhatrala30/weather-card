@@ -94,30 +94,7 @@ document.querySelector(".search-location button").addEventListener("click", func
 
 document.querySelector(".current-temperature").addEventListener("click", function () {
     root.render(e(SwitchDegreeScale));
-    // console.log("THIS IS A GOOD SIGN");
 })
-
-class SwitchDegreeScale extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { inC: false };
-    }
-
-    render() {
-        if (this.state.inC) {
-            scale = "imperial";
-            fetchWeather("charlotte");
-        }
-        else {
-            scale = "metric";
-            fetchWeather("toronto");
-        }
-
-        return e(
-            { onClick: () => this.setState( (state) => {return { inC: !inC }} ) }
-        );
-    }
-}
 
 // fetchWeather(35.22709, -80.84313);
 fetchWeather("New York");
