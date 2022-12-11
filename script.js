@@ -93,6 +93,7 @@ document.querySelector(".search-location button").addEventListener("click", func
 })
 
 document.querySelector(".current-temperature").addEventListener("click", function () {
+    const element = fetchWeather(currentCity);
     root.render(e(SwitchDegreeScale));
 })
 
