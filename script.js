@@ -1,11 +1,11 @@
 let scale = "imperial";
+let currentCity;
 
-const e = React.createElement;
-const domContainer = document.querySelector(".current-temperature");
-const root = ReactDOM.createRoot(domContainer);
+const root = ReactDOM.createRoot(document.querySelector(".current-temperature"));
 
 function fetchWeather(city)
 {
+    currentCity = city;
     let key = "10aade587740d37f361ec56082945ae6";
     let url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=" + scale + "&appid=" + key;
     // fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&units=imperial&appid=" + key)
@@ -20,8 +20,7 @@ function fetchWeather(city)
         else {
             displayWeatherC(data);
         }
-    }
-    );
+    });
 }
 
 function displayWeatherF(data)
