@@ -93,8 +93,14 @@ document.querySelector(".search-location button").addEventListener("click", func
 })
 
 document.querySelector(".current-temperature").addEventListener("click", function () {
+    if (scale == "metric") {
+        scale = "imperial";
+    }
+    else {
+        scale = "metric";
+    }
     const element = fetchWeather(currentCity);
-    root.render(e(SwitchDegreeScale));
+    root.render(element);
 })
 
 // fetchWeather(35.22709, -80.84313);
