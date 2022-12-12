@@ -8,7 +8,7 @@ function fetchWeather(city)
     currentCity = city;
     let key = "10aade587740d37f361ec56082945ae6";
     let url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=" + scale + "&appid=" + key;
-    // fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&units=imperial&appid=" + key)
+    
     fetch(url)
     .then(response => 
         response.json()
@@ -88,7 +88,6 @@ function displayWeatherC(data)
 }
 
 document.querySelector(".search-location button").addEventListener("click", function () {
-    // fetchWeather(document.querySelector(".search-bar-lat").value, document.querySelector(".search-bar-long").value);
     fetchWeather(document.querySelector(".search-bar").value);
 })
 
@@ -103,5 +102,4 @@ document.querySelector(".current-temperature").addEventListener("click", functio
     root.render(element);
 })
 
-// fetchWeather(35.22709, -80.84313);
 fetchWeather("New York");
