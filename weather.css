@@ -31,7 +31,7 @@ body {
     margin: 0.5em;
 }
 
-button {
+.search-location > button {
     background-color: dimgrey;
     color: ghostwhite;
     border: none;
@@ -41,7 +41,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.search-location > button:hover {
     background-color: grey;
     transition: 0.5s ease-in-out;
 }
@@ -64,6 +64,8 @@ button:hover {
 .icon-box {
     display: flex;
     align-items: center;
+    margin: none;
+    padding: none;
 }
 
 .description {
@@ -73,3 +75,22 @@ button:hover {
 .feels-like {
     cursor: pointer;
 }
+
+.solar-data > button {
+    background-color: thistle;
+    color: #1b1c21d0;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    margin: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+/* .sunrise-sunset.hidden {
+    visibility: hidden;
+}
+
+.sunrise-sunset.hidden:after {
+    visibility: visible;
+} */
