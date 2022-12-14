@@ -23,7 +23,7 @@ function fetchWeather(city)
     });
 }
 
-function displayWeatherF(data)
+function displayWeather(data)
 {
     // console.log(data);
     let {name} = data;
@@ -48,17 +48,33 @@ function displayWeatherF(data)
 
     document.querySelector(".main-info").classList.remove("loading");
 
-    if (temp <= 32) {
-        document.querySelector("body").style.background = "linear-gradient(azure, lightskyblue)";
+    if (scale == "metric") {
+        if (temp <= 0) {
+            document.querySelector("body").style.background = "linear-gradient(azure, lightskyblue)";
+        }
+        else if (temp <= 12.778) {
+            document.querySelector("body").style.background = "linear-gradient(skyblue, royalblue)";
+        }
+        else if (temp <= 23.889) {
+            document.querySelector("body").style.background = "linear-gradient(palegreen, plum)";
+        }
+        else if (23.889 < temp) {
+            document.querySelector("body").style.background = "linear-gradient(gold, orangered)";
+        }
     }
-    else if (temp <= 55) {
-        document.querySelector("body").style.background = "linear-gradient(cyan, blue)";
-    }
-    else if (temp <= 75) {
-        document.querySelector("body").style.background = "linear-gradient(yellow, cyan)";
-    }
-    else if (75 < temp) {
-        document.querySelector("body").style.background = "linear-gradient(orange, gold)";
+    else {
+        if (temp <= 32) {
+            document.querySelector("body").style.background = "linear-gradient(azure, lightskyblue)";
+        }
+        else if (temp <= 55) {
+            document.querySelector("body").style.background = "linear-gradient(skyblue, royalblue)";
+        }
+        else if (temp <= 75) {
+            document.querySelector("body").style.background = "linear-gradient(palegreen, plum)";
+        }
+        else if (75 < temp) {
+            document.querySelector("body").style.background = "linear-gradient(gold, orangered)";
+        }
     }
 }
 
