@@ -34,10 +34,17 @@ function displayWeatherF(data)
     feels_like = Math.round(feels_like);
 
     document.querySelector(".city-name").innerText = "Weather in " + name + ", " + country;
-    document.querySelector(".current-temperature").innerText = temp + "°F";
     document.querySelector(".icon").src = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
     document.querySelector(".description").innerText = description;
-    document.querySelector(".feels-like").innerText = "Feels like: " + feels_like + "°F";
+    
+    if (scale == "metric") {
+        document.querySelector(".current-temperature").innerText = temp + "°C";
+        document.querySelector(".feels-like").innerText = "Feels like: " + feels_like + "°C";
+    }
+    else {
+        document.querySelector(".current-temperature").innerText = temp + "°F";
+        document.querySelector(".feels-like").innerText = "Feels like: " + feels_like + "°F";
+    }
 
     document.querySelector(".main-info").classList.remove("loading");
 
@@ -51,38 +58,6 @@ function displayWeatherF(data)
         document.querySelector("body").style.background = "linear-gradient(yellow, cyan)";
     }
     else if (75 < temp) {
-        document.querySelector("body").style.background = "linear-gradient(orange, gold)";
-    }
-}
-
-function displayWeatherC(data)
-{
-    // console.log(data);
-    let {name} = data;
-    let {country} = data.sys;
-    let {description, icon} = data.weather[0];
-    let {temp, feels_like} = data.main;
-    temp = Math.round(temp);
-    feels_like = Math.round(feels_like);
-
-    document.querySelector(".city-name").innerText = "Weather in " + name + ", " + country;
-    document.querySelector(".current-temperature").innerText = temp + "°C";
-    document.querySelector(".icon").src = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
-    document.querySelector(".description").innerText = description;
-    document.querySelector(".feels-like").innerText = "Feels like: " + feels_like + "°C";
-
-    document.querySelector(".main-info").classList.remove("loading");
-
-    if (temp <= 0) {
-        document.querySelector("body").style.background = "linear-gradient(azure, lightskyblue)";
-    }
-    else if (temp <= 12.778) {
-        document.querySelector("body").style.background = "linear-gradient(cyan, blue)";
-    }
-    else if (temp <= 23.889) {
-        document.querySelector("body").style.background = "linear-gradient(yellow, cyan)";
-    }
-    else if (23.889 < temp) {
         document.querySelector("body").style.background = "linear-gradient(orange, gold)";
     }
 }
