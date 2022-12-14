@@ -80,12 +80,14 @@ function displayWeather(data)
 
 document.querySelector(".search-bar").addEventListener("keyup",  function (event) {
     if (event.key == "Enter") {
-        fetchWeather(document.querySelector(".search-bar").value);
+        const element = fetchWeather(document.querySelector(".search-bar").value);
+        root.render(element);
     }
 })
 
 document.querySelector(".search-location button").addEventListener("click", function () {
-    fetchWeather(document.querySelector(".search-bar").value);
+    const element = fetchWeather(document.querySelector(".search-bar").value);
+    root.render(element);
 })
 
 document.querySelector(".current-temperature").addEventListener("click", function () {
