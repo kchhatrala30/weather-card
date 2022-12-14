@@ -8,18 +8,13 @@ function fetchWeather(city)
     currentCity = city;
     let key = "10aade587740d37f361ec56082945ae6";
     let url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=" + scale + "&appid=" + key;
-    
+
     fetch(url)
     .then(response => 
         response.json()
     )
     .then(data => {
-        if (scale == "imperial") {
-            displayWeatherF(data);
-        }
-        else {
-            displayWeatherC(data);
-        }
+        displayWeather(data)
     });
 }
 
@@ -36,7 +31,7 @@ function displayWeather(data)
     document.querySelector(".city-name").innerText = "Weather in " + name + ", " + country;
     document.querySelector(".icon").src = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
     document.querySelector(".description").innerText = description;
-    
+
     if (scale == "metric") {
         document.querySelector(".current-temperature").innerText = temp + "°C";
         document.querySelector(".feels-like").innerText = "Feels like: " + feels_like + "°C";
@@ -91,6 +86,17 @@ document.querySelector(".search-location button").addEventListener("click", func
 })
 
 document.querySelector(".current-temperature").addEventListener("click", function () {
+    if (scale == "metric") {
+        scale = "imperial";
+    }
+    else {
+        scale = "metric";
+    }
+    const element = fetchWeather(currentCity);
+    root.render(element);
+})
+
+document.querySelector(".feels-like").addEventListener("click", function () {
     if (scale == "metric") {
         scale = "imperial";
     }
