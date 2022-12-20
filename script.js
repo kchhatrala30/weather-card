@@ -1,8 +1,10 @@
 let scale = "imperial";
 let key = "4727f6a2078ba4ade6f8ab2691b946b7";
 let currentCity;
+let solarStatus = false;
 
 const root = ReactDOM.createRoot(document.querySelector(".current-temperature"));
+const root2 = ReactDOM.createRoot(document.querySelector(".feels-like"));
 
 function fetchLocation(city)
 {
@@ -28,10 +30,15 @@ function fetchWeather(lat, lon)
     .then(response =>
         response.json()
     )
-    .then(data => 
-        displayWeather(data)
-        // displaySolar(data)
-    );
+    .then(data => {
+        displayWeather(data);
+        if (solarStatus) {
+            displaySolar(data);
+        }
+        else {
+            document.querySelector(".main-info").classList.add("hidden");
+        }
+    });
 }
 
 function displayWeather(data)
@@ -99,11 +106,13 @@ function displayLocation(data)
     
 }
 
-// function displaySolar(data)
-// {
-//     let {sunrise, sunset, moon_phase} = data.daily[0];
-//     document.querySelector(".sunrise-sunset").innerText = "Sunrise: " + sunrise + "\nSunset: " + sunset + "\nMoon phase: " + moon_phase;
-// }
+function displaySolar(data)
+{
+    let {sunrise, sunset, moon_phase} = data.daily[0];
+    sunrise = new Date(sunrise * 1000);
+    sunset = new Date(sunset * 1000);
+    document.querySelector(".sunrise-sunset").innerText = "Sunrise: " + sunrise + "\nSunset: " + sunset + "\nMoon phase: " + moon_phase;
+}
 
 document.querySelector(".search-bar").addEventListener("keyup",  function (event) {
     if (event.key == "Enter") {
@@ -136,11 +145,19 @@ document.querySelector(".feels-like").addEventListener("click", function () {
         scale = "metric";
     }
     const element = fetchLocation(currentCity);
-    root.render(element);
+    root2.render(element);
 })
 
-// document.querySelector(".solar-data button").addEventListener("click", function () {
-//     document.querySelector(".main-info").classList.remove("hidden");
-// })
+document.querySelector(".solar-data button").addEventListener("click", function () {
+    solarStatus = !solarStatus;
+    if (solarStatus) {
+        document.querySelector(".sunrise-sunset").classList.remove("hidden");
+        fetchLocation(currentCity);
+    }
+    else {
+        document.querySelector(".sunrise-sunset").classList.add("hidden");
+    }
+    
+})
 
 fetchLocation("Manhattan");
