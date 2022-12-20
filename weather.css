@@ -87,10 +87,10 @@ body {
     cursor: pointer;
 }
 
-/* .sunrise-sunset.hidden {
+.sunrise-sunset.hidden {
     visibility: hidden;
 }
 
 .sunrise-sunset.hidden:after {
     visibility: visible;
-} */
+}
