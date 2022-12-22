@@ -17,8 +17,8 @@ function fetchLocation(city)
     )
     .then(data => {
         const {lat, lon} = data[0];
-        fetchWeather(lat, lon);
         displayLocation(data[0]);
+        fetchWeather(lat, lon);
     });  
 }
 
@@ -36,7 +36,7 @@ function fetchWeather(lat, lon)
             displaySolar(data);
         }
         else {
-            document.querySelector(".main-info").classList.add("hidden");
+            document.querySelector(".sunrise-sunset").innerText = "";
         }
     });
 }
@@ -116,14 +116,12 @@ function displaySolar(data)
 
 document.querySelector(".search-bar").addEventListener("keyup",  function (event) {
     if (event.key == "Enter") {
-        const element = fetchLocation(document.querySelector(".search-bar").value);
-        root.render(element);
+        fetchLocation(document.querySelector(".search-bar").value);
     }
 })
 
 document.querySelector(".search-location button").addEventListener("click", function () {
-    const element = fetchLocation(document.querySelector(".search-bar").value);
-    root.render(element);
+    fetchLocation(document.querySelector(".search-bar").value);
 })
 
 document.querySelector(".current-temperature").addEventListener("click", function () {
@@ -151,13 +149,12 @@ document.querySelector(".feels-like").addEventListener("click", function () {
 document.querySelector(".solar-data button").addEventListener("click", function () {
     solarStatus = !solarStatus;
     if (solarStatus) {
-        document.querySelector(".sunrise-sunset").classList.remove("hidden");
         fetchLocation(currentCity);
+        document.querySelector(".sunrise-sunset").classList.remove("hidden");
     }
     else {
-        document.querySelector(".sunrise-sunset").classList.add("hidden");
+        fetchLocation(currentCity);
     }
-    
 })
 
 fetchLocation("Manhattan");
