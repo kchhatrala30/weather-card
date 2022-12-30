@@ -11,7 +11,7 @@ body {
     background-color: #1b1c21d0;
     color: azure;
     padding: 25px;
-    border-radius: 25px;
+    border-radius: 33px;
     width: 25%;
 }
 
@@ -76,14 +76,18 @@ body {
     cursor: pointer;
 }
 
+.solar-data {
+    padding-top: 10px;
+}
+
 .solar-data > button {
     background-color: thistle;
     color: #1b1c21d0;
     border: none;
     outline: none;
     border-radius: 25px;
-    margin: 5px;
-    padding: 5px;
+    /* margin: 5px; */
+    padding: 10px;
     cursor: pointer;
 }
 
@@ -91,6 +95,6 @@ body {
     visibility: hidden;
 }
 
-.sunrise-sunset.hidden:after {
+.sunrise-sunset.hidden::after {
     visibility: visible;
 }
