@@ -157,4 +157,4 @@ document.querySelector(".solar-data button").addEventListener("click", function 
     }
 })
 
-fetchLocation("Manhattan");
+fetchLocation("Charlotte");
