@@ -91,6 +91,10 @@ body {
     cursor: pointer;
 }
 
+.sunrise-sunset {
+    margin-top: 10px;
+}
+
 .sunrise-sunset.hidden {
     visibility: hidden;
 }
